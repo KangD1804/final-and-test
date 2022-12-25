@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => { //LOAD HTML BEFORE JS FILES
     const grid = document.querySelector(".grid");
+    const doodlerPic = document.createElement("img")
     const doodler = document.createElement("div");
     let doodlerLeftSpace = 50;
     let startPoint = 250;
@@ -17,7 +18,10 @@ document.addEventListener("DOMContentLoaded", () => { //LOAD HTML BEFORE JS FILE
     let score = 0;
 
     function createDoodler() {
+        doodlerPic.src = "doodler.png"
+        doodlerPic.classList.add("doodler")
         grid.appendChild(doodler);
+        doodler.appendChild(doodlerPic);
         doodler.classList.add("doodler");
         doodlerLeftSpace = platforms[0].left;
         doodler.style.left= doodlerLeftSpace + 'px';
@@ -115,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => { //LOAD HTML BEFORE JS FILE
     }
 
     function moveLeft(){
-        if(isGoingRight){
+        if(!isGoingRight){
             clearInterval(rightTimerId);
             isGoingRight = false;
         }
@@ -129,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => { //LOAD HTML BEFORE JS FILE
     }
 
     function moveRight(){
-        if(isGoingLeft){
+        if(!isGoingLeft){
             clearInterval(leftTimerId);
             isGoingLeft = false;
         }
